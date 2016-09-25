@@ -11,6 +11,7 @@
 * [live-reload](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei?hl=fr)
 
 ## Utilisation
+* `npm install` : récupère toutes les libraires nécessaires au projet
 * `gulp build` ou `gulp` : compile l'ensemble du projet
 * `gulp minify` : minifie les fichiers
 * `gulp prod` : compile et minifie l'ensemble du projet
