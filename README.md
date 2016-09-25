@@ -1,4 +1,4 @@
-c# PT_React
+PT_React
 **Percée technique ReactJS avec Material-UI**
 
 ## Pré-requis :
