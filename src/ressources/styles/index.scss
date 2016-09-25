@@ -9,5 +9,11 @@ html {
   @include default();
   body {
     @include default();
+    #app {
+      @include default();
+      .navbar {
+        margin-left: 300px;
+      }
+    }
   }
 }
