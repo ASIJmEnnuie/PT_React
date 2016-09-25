@@ -15,7 +15,7 @@ c# PT_React
 * [Material-UI](http://www.material-ui.com#/)
 
 ## Commandes
-* `npm install` : récupère toutes les libraires nécessaires au projet
+* `npm install` : récupère toutes les librairies nécessaires au projet
 * `gulp build` ou `gulp` : compile l'ensemble du projet
 * `gulp minify` : minifie les fichiers
 * `gulp prod` : compile et minifie l'ensemble du projet
