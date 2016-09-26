@@ -11,9 +11,8 @@ html {
     @include default();
     #app {
       @include default();
-      .navbar {
-        margin-left: 300px;
-      }
+      // overflow: hidden;
+
     }
   }
 }

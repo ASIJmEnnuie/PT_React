@@ -6,8 +6,6 @@ var AppDrawer = React.createClass({
   getInitialState: function() {
     return {
       docked:true,
-      width:300,
-      swipeAreaWidth:300
     }
   },
 
@@ -21,8 +19,7 @@ var AppDrawer = React.createClass({
     return (
       <Drawer
         docked={this.state.docked}
-        width={this.state.width}
-        swipeAreaWidth={this.state.swipeAreaWidth}
+        width={this.props.width}
         open={this.props.open}
       >
         <MenuItem>Menu Item</MenuItem>

@@ -1,8 +1,10 @@
 import React from 'react';
-import {render} from 'react-dom';
+import ReactDOM from 'react-dom';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import Main from './Main'; // Our custom react component
 
 injectTapEventPlugin();
 
-render(<Main />, document.getElementById('app'));
+var racine =  document.getElementById('app');
+
+ReactDOM.render(<Main />, racine);
