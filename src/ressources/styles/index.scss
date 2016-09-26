@@ -12,7 +12,10 @@ html {
     #app {
       @include default();
       // overflow: hidden;
-
+      .content > h1{
+        color: #444;
+        font-family: Arial, Helvetica, sans-serif;
+      }
     }
   }
 }
