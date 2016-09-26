@@ -1,5 +1,4 @@
 import React from 'react';
-import Dimensions from 'react-dimensions';
 import AppBar from 'material-ui/AppBar';
 import AppLeftDrawer from './AppLeftDrawer';
 import AppRightDrawer from './AppRightDrawer';
