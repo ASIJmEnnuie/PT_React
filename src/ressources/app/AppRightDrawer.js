@@ -1,17 +1,21 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
+import AppBar from 'material-ui/AppBar';
 import MenuItem from 'material-ui/MenuItem';
+import AppProfilImage from './AppProfilImage';
 
-var AppDrawer = React.createClass({
+
+var AppRightDrawer = React.createClass({
   getInitialState: function() {
     return {
       docked:true,
+      openSecondary:true
     }
   },
 
   getDefaultProps: function() {
     return {
-      open:true
+      open:false
    }
  },
 
@@ -19,9 +23,14 @@ var AppDrawer = React.createClass({
     return (
       <Drawer
         docked={this.state.docked}
+        openSecondary={this.state.openSecondary}
         width={this.props.width}
         open={this.props.open}
       >
+        <AppBar
+          iconElementLeft={<div/>}
+          iconElementRight={<AppProfilImage src={"profil.svg"} click={this.props.clickOnRightButton} />}
+        />
         <MenuItem>Menu Item</MenuItem>
         <MenuItem>Menu Item 2</MenuItem>
       </Drawer>
@@ -29,4 +38,4 @@ var AppDrawer = React.createClass({
   }
 });
 
-export default AppDrawer;
+export default AppRightDrawer;

@@ -16,6 +16,19 @@ html {
         color: #444;
         font-family: Arial, Helvetica, sans-serif;
       }
+
+      .profil {
+        height: 50px;
+        width: 50px;
+        border-radius: 50px;
+        border-width: 1px;
+        border-style: solid;
+      }
+
+      .profil:hover {
+        opacity: 0.5;
+        cursor:pointer;
+      }
     }
   }
 }
