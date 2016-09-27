@@ -5,16 +5,41 @@
   height: 100%;
 }
 
+$transitionTime:2s;
+$widthDrawerLeft:15%;
+
+
 html {
   @include default();
   body {
     @include default();
     #app {
       @include default();
-      // overflow: hidden;
-      .content > h1{
-        color: #444;
+      #content {
+        opacity: 0.67;
         font-family: Arial, Helvetica, sans-serif;
+      }
+
+      #page {
+        width: 100% - $widthDrawerLeft;
+        margin-left: $widthDrawerLeft;
+        transition: $transitionTime;
+      }
+
+      #LeftDrawer {
+        * {
+          display: block;
+          transition: 3s;
+        }
+
+        background-color: #555;
+        height: 100%;
+        width: $widthDrawerLeft;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        transition: $transitionTime;
       }
 
       .profil {

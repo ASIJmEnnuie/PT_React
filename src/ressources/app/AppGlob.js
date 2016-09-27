@@ -1,22 +1,19 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import AppBar from 'material-ui/AppBar';
 import AppLeftDrawer from './AppLeftDrawer';
+import AppLeftDrawerBis from './AppLeftDrawerBis';
 import AppRightDrawer from './AppRightDrawer';
 import AppNavbar from './AppNavbar';
 import AppContent from './AppContent';
+
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 var AppGlob = React.createClass({
   getInitialState: function() {
     return {
       openLeftDrawer: true,
       openRightDrawer: false,
-      navbarWidth: window.innerWidth - 300,
-      drawerWidth: 300,
-      style: {
-        width: window.innerWidth - 300,
-        position: "relative",
-        left: 300
-      }
     }
   },
 
@@ -25,7 +22,21 @@ var AppGlob = React.createClass({
       openRightDrawer: false,
       openLeftDrawer : !this.state.openLeftDrawer
     });
-    this.resize();
+    // var node = ReactDOM.findDOMNode(this);
+    // node.style.width = "100%";
+    // node.style.margin = "0%";
+    // console.log(node);
+    if (this.state.openLeftDrawer) {
+      document.getElementById("page").style.width = "85%";
+      document.getElementById("page").style.marginLeft = "15%";
+      document.getElementById("LeftDrawer").style.width = "15%";
+    }
+    else {
+      document.getElementById("page").style.width = "100%";
+      document.getElementById("page").style.marginLeft = "0%";
+      document.getElementById("LeftDrawer").style.width = "0%";
+    }
+
   },
 
   clickOnRightButton: function() {
@@ -33,43 +44,15 @@ var AppGlob = React.createClass({
      openLeftDrawer: false,
      openRightDrawer : !this.state.openRightDrawer
     });
-    this.setState({
-      style: {
-        width: window.innerWidth,
-        position: "relative",
-        left: 0
-      }
-    });
-  },
-
-  resize: function() {
-    if (this.state.openLeftDrawer) {
-      this.setState({
-        style: {
-          width: window.innerWidth,
-          position: "relative",
-          left: 0
-        }
-      });
-    }
-    else {
-      this.setState({
-        style: {
-          width: window.innerWidth - 300,
-          position: "relative",
-          left: 300
-        }
-      });
-    }
   },
 
   render: function() {
     return (
       <div>
-      <AppLeftDrawer open={this.state.openLeftDrawer} width={this.state.drawerWidth}/>
-      <AppRightDrawer open={this.state.openRightDrawer} width={200} clickOnRightButton={this.clickOnRightButton}/>
+        <AppLeftDrawerBis open={this.state.openLeftDrawer} />
+        <AppRightDrawer open={this.state.openRightDrawer} width={200} clickOnRightButton={this.clickOnRightButton}/>
 
-        <div style={this.state.style}>
+        <div id="page">
           <AppNavbar clickOnLeftButton={this.clickOnLeftButton} clickOnRightButton={this.clickOnRightButton}/>
           <AppContent />
         </div>
