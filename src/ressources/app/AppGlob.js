@@ -11,6 +11,10 @@ import $ from "jquery";
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 var AppGlob = React.createClass({
+  componentDidMount: function() {
+    this.resizePage();
+  },
+
   getInitialState: function() {
     return {
       openLeftDrawer: true,
@@ -37,12 +41,12 @@ var AppGlob = React.createClass({
   resizePage: function() {
     var node = ReactDOM.findDOMNode(this);
 
-    if (this.state.openLeftDrawer === false) {
+    if (this.state.openLeftDrawer === true) {
       $(node).children("#page").css("width", "85%");
       $(node).children("#page").css("margin-left", "15%");
       $(node).children("#LeftDrawer").css("left", "0%");
     }
-    else if(this.state.openLeftDrawer === true) {
+    else if(this.state.openLeftDrawer === false) {
       $(node).children("#page").css("width", "100%");
       $(node).children("#page").css("margin-left", "0%");
       $(node).children("#LeftDrawer").css("left", "-15%");

@@ -6,7 +6,7 @@
 }
 
 $transitionTime:1s;
-$widthDrawerLeft:15%;
+$widthDrawerLeft:50%;
 
 
 html {
@@ -25,8 +25,8 @@ html {
 
       #page {
         height: 100%;
-        width: 100% - $widthDrawerLeft;
-        margin-left: $widthDrawerLeft;
+        width: 100%;
+        margin-left: 0px;
         transition: $transitionTime;
       }
 
@@ -36,7 +36,7 @@ html {
         position: fixed;
         z-index: -1;
         top: 0;
-        left: 0;
+        left: $widthDrawerLeft;
         transition: $transitionTime;
       }
 
