@@ -10,11 +10,6 @@ import $ from "jquery";
 var style = require("../datas/style.json");
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
-
-console.log(style);
-
-
-
 var AppGlob = React.createClass({
   getInitialState: function() {
     return {
@@ -48,16 +43,14 @@ var AppGlob = React.createClass({
   },
 
   resizePage: function() {
-
-console.log(this.state);
     var node = ReactDOM.findDOMNode(this);
     var widthDrawerLeft, widthPage;
 
     if ($(document).width() >= 900){
-      widthDrawerLeft = 15;
+      widthDrawerLeft = this.state.widthDrawerLeftDesktop;
     }
     else {
-      widthDrawerLeft = 50;
+      widthDrawerLeft = this.state.widthDrawerLeftMobile;
     }
 
     widthPage = 100 - widthDrawerLeft;
@@ -65,12 +58,12 @@ console.log(this.state);
     if (this.state.openLeftDrawer === true) {
       $(node).children("#page").css("width", widthPage+"%");
       $(node).children("#page").css("margin-left", widthDrawerLeft+"%");
-      $(node).children("#LeftDrawer").css("left", "0%");
+      $(node).children("#leftDrawer").css("left", "0%");
     }
     else if(this.state.openLeftDrawer === false) {
       $(node).children("#page").css("width", "100%");
       $(node).children("#page").css("margin-left", "0%");
-      $(node).children("#LeftDrawer").css("left", "-"+widthDrawerLeft+"%");
+      $(node).children("#leftDrawer").css("left", "-"+widthDrawerLeft+"%");
     }
   },
 
