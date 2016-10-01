@@ -6,7 +6,7 @@
 }
 
 $transitionTime:1s;
-$widthDrawerLeft:50%;
+$widthDrawerLeft:15%;
 
 
 html {
@@ -32,11 +32,11 @@ html {
 
       #LeftDrawer {
         height: 100%;
-        width: $widthDrawerLeft;
+        // width: $widthDrawerLeft;
         position: fixed;
-        z-index: -1;
+        z-index: 1100;
         top: 0;
-        left: $widthDrawerLeft;
+        // left: $widthDrawerLeft;
         transition: $transitionTime;
       }
 
@@ -58,23 +58,23 @@ html {
 			.slick-prev {
 				left: 0px;
 			}
-			
+
 			.slick-next {
 				right: 0px;
 			}
-			
+
 			.slick-prev, .slick-next {
 				width: 4%;
 				height: 50%;
 				background-color: lightslategrey;
 			}
-			
+
 			.slick-list {
 				background-color: lightslategrey;
 				margin-left: 4%;
 				margin-right: 4%;
 			}
-			
+
 			.slide {
 				height: 200px;
 				margin: 10px;
@@ -82,17 +82,17 @@ html {
 				position: inherit;
 				text-align: center;
 			}
-			
+
 			.slide>h2 {
 				font-size:65;
 			}
-			
+
 			.slide-text {
 				height: 50%;
-				position: absolute; 
+				position: absolute;
 				bottom: 0px;
 				width: inherit;
-				background-color: gray; 
+				background-color: gray;
 				opacity: .5;
 				color: white;
 			}

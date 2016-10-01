@@ -40,16 +40,26 @@ var AppGlob = React.createClass({
 
   resizePage: function() {
     var node = ReactDOM.findDOMNode(this);
+    var widthDrawerLeft, widthPage;
+
+    if ($(document).width() >= 900){
+      widthDrawerLeft = 15;
+    }
+    else {
+      widthDrawerLeft = 50;
+    }
+
+    widthPage = 100 - widthDrawerLeft;
 
     if (this.state.openLeftDrawer === true) {
-      $(node).children("#page").css("width", "85%");
-      $(node).children("#page").css("margin-left", "15%");
+      $(node).children("#page").css("width", widthPage+"%");
+      $(node).children("#page").css("margin-left", widthDrawerLeft+"%");
       $(node).children("#LeftDrawer").css("left", "0%");
     }
     else if(this.state.openLeftDrawer === false) {
       $(node).children("#page").css("width", "100%");
       $(node).children("#page").css("margin-left", "0%");
-      $(node).children("#LeftDrawer").css("left", "-15%");
+      $(node).children("#LeftDrawer").css("left", "-"+widthDrawerLeft+"%");
     }
   },
 
