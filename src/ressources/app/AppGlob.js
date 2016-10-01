@@ -7,38 +7,55 @@ import AppNavbar from './AppNavbar';
 import AppContent from './AppContent';
 import $ from "jquery";
 
+var json = [];
+$.getJSON( './ressources/datas/style.json', {'async': false})
+  .done(function( data ) {
+    json.push(data);
+  });
 
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 var AppGlob = React.createClass({
   componentDidMount: function() {
-    this.resizePage();
+    // console.log(racine);
+    for (i=0; i < 500; i++)
+      console.log(json.length);
   },
 
   getInitialState: function() {
     return {
-      openLeftDrawer: true,
+      openLeftDrawer: false,
       openRightDrawer: false,
+      widthDrawerLeftDesktop: 15,
+      widthDrawerLeftMobile: 50
     }
   },
 
   clickOnLeftButton: function(){
-    this.resizePage();
-    this.setState({
-      openRightDrawer: false,
-      openLeftDrawer : !this.state.openLeftDrawer
+    this.setState(function(previousState, currentProps) {
+      this.resizePage();
+
+      return {
+        openRightDrawer: false,
+        openLeftDrawer : !this.state.openLeftDrawer
+      };
     });
   },
 
   clickOnRightButton: function() {
-    this.resizePage();
-    this.setState({
-      openLeftDrawer: false,
-      openRightDrawer : !this.state.openRightDrawer
+    this.setState(function(previousState, currentProps) {
+      this.resizePage();
+
+      return {
+        openLeftDrawer: false,
+        openRightDrawer : !this.state.openRightDrawer
+      };
     });
   },
 
   resizePage: function() {
+
+console.log(this.state);
     var node = ReactDOM.findDOMNode(this);
     var widthDrawerLeft, widthPage;
 

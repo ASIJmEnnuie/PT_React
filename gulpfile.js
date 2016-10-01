@@ -2,7 +2,7 @@ var path = require('path');
 var gulp = require('gulp');
 var plugins = require('gulp-load-plugins')();
 var livereload = require('gulp-livereload');
-
+var sass = require('gulp-ruby-sass');
 
 var source = './src';
 var destination = './dist';
@@ -23,15 +23,18 @@ var configWebpack = {
 };
 
 
-gulp.task('compileCSS', function () {
-  return gulp.src(source + '/ressources/styles/index.scss')
-    .pipe(plugins.sass().on('error', plugins.sass.logError))
+gulp.task('compileCSS', () =>
+    sass(source + '/ressources/styles/index.scss', {
+      sourcemap: false,
+      require: ["sass-json-vars"]
+    })
+    .on('error', sass.logError)
     .pipe(plugins.csscomb())
     .pipe(plugins.cssbeautify({indent: '  '}))
     .pipe(plugins.autoprefixer())
     .pipe(gulp.dest(destination + '/ressources/styles/'))
-    .pipe(livereload());
-});
+    .pipe(livereload())
+);
 
 
 gulp.task('copyHTML', function() {
@@ -39,6 +42,14 @@ gulp.task('copyHTML', function() {
   .pipe(gulp.dest(destination))
   .pipe(livereload());
 });
+
+
+gulp.task('copyData', function() {
+  return gulp.src(source + '/ressources/datas/*.json')
+  .pipe(gulp.dest(destination + '/ressources/datas/'))
+  .pipe(livereload());
+});
+
 
 
 gulp.task('copyImg', function() {
@@ -85,12 +96,15 @@ gulp.task('webpack', function() {
 gulp.task('watch', function () {
   livereload.listen();
   gulp.watch(source + '/ressources/styles/*.scss', ['compileCSS']);
+  gulp.watch(source + '/ressources/datas/*.json',  ['compileCSS']);
   gulp.watch(source + '/ressources/app/*.js', ['webpack']);
+  gulp.watch(source + '/ressources/app/*.jsx', ['webpack']);
+  gulp.watch(source + '/ressources/datas/*.json',  ['copyData']);
   gulp.watch(source + '/index.html',  ['copyHTML']);
 });
 
 
-gulp.task('build', ['webpack', 'compileCSS', 'copyHTML', 'copyImg']);
+gulp.task('build', ['webpack', 'compileCSS', 'copyHTML', 'copyImg', 'copyData']);
 gulp.task('minify', ['minifyCSS', 'minifyJS', 'minifyHTML']);
 gulp.task('prod', ['build',  'minify']);
 gulp.task('default', ['build']);
