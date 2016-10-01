@@ -17,6 +17,10 @@ var configWebpack = {
         test : /\.jsx?/,
         include : path.resolve(__dirname, 'src/ressources/app'),
         loader : 'babel'
+      },
+      {
+        test: /\.json$/,
+        loader: "json"
       }
     ]
   }
@@ -40,13 +44,6 @@ gulp.task('compileCSS', () =>
 gulp.task('copyHTML', function() {
   return gulp.src(source + '/index.html')
   .pipe(gulp.dest(destination))
-  .pipe(livereload());
-});
-
-
-gulp.task('copyData', function() {
-  return gulp.src(source + '/ressources/datas/*.json')
-  .pipe(gulp.dest(destination + '/ressources/datas/'))
   .pipe(livereload());
 });
 
@@ -99,12 +96,11 @@ gulp.task('watch', function () {
   gulp.watch(source + '/ressources/datas/*.json',  ['compileCSS']);
   gulp.watch(source + '/ressources/app/*.js', ['webpack']);
   gulp.watch(source + '/ressources/app/*.jsx', ['webpack']);
-  gulp.watch(source + '/ressources/datas/*.json',  ['copyData']);
   gulp.watch(source + '/index.html',  ['copyHTML']);
 });
 
 
-gulp.task('build', ['webpack', 'compileCSS', 'copyHTML', 'copyImg', 'copyData']);
+gulp.task('build', ['webpack', 'compileCSS', 'copyHTML', 'copyImg']);
 gulp.task('minify', ['minifyCSS', 'minifyJS', 'minifyHTML']);
 gulp.task('prod', ['build',  'minify']);
 gulp.task('default', ['build']);

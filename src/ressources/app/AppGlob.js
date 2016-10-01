@@ -7,27 +7,21 @@ import AppNavbar from './AppNavbar';
 import AppContent from './AppContent';
 import $ from "jquery";
 
-var json = [];
-$.getJSON( './ressources/datas/style.json', {'async': false})
-  .done(function( data ) {
-    json.push(data);
-  });
-
+var style = require("../datas/style.json");
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
-var AppGlob = React.createClass({
-  componentDidMount: function() {
-    // console.log(racine);
-    for (i=0; i < 500; i++)
-      console.log(json.length);
-  },
 
+console.log(style);
+
+
+
+var AppGlob = React.createClass({
   getInitialState: function() {
     return {
       openLeftDrawer: false,
       openRightDrawer: false,
-      widthDrawerLeftDesktop: 15,
-      widthDrawerLeftMobile: 50
+      widthDrawerLeftDesktop: parseInt(style.widthDrawerLeftDesktop.substring(0, style.widthDrawerLeftDesktop.length - 1)),
+      widthDrawerLeftMobile: parseInt(style.widthDrawerLeftMobile.substring(0, style.widthDrawerLeftMobile.length - 1))
     }
   },
 

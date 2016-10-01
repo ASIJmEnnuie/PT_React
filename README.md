@@ -3,6 +3,7 @@
 
 ## Pré-requis :
 * [sass](http://sass-lang.com/install)
+* [sass-json-vars](https://github.com/vigetlabs/sass-json-vars)
 * [node-js](https://nodejs.org/en/)
 * [npm](http://blog.npmjs.org/post/85484771375/how-to-install-npm)
 * [gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)

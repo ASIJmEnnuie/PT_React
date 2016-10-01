@@ -34,7 +34,7 @@ html {
         z-index: 1100;
         top: 0;
         width: $widthDrawerLeftMobile;
-        left: $widthDrawerLeftMobile;
+        left: 0%;
         transition: $transitionTime;
       }
 
@@ -46,7 +46,6 @@ html {
 
         #LeftDrawer {
           width: $widthDrawerLeftDesktop;
-          left: 0%;
         }
       }
 
