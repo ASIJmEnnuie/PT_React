@@ -10,7 +10,7 @@ var AppLeftDrawer = React.createClass({
 
   render: function() {
     return (
-      <div id="LeftDrawer" open={this.props.open}>
+      <div id="leftDrawer" open={this.props.open}>
         <MenuItem>Menu Item</MenuItem>
         <MenuItem>Menu Item 2</MenuItem>
         <MenuItem>Menu Item 3</MenuItem>
