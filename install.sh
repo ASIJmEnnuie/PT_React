@@ -2,6 +2,7 @@ apt-get update
 
 #Install Sass
 gem install sass
+gem install sass-json-vars
 
 #Install nodejs & npm
 apt-get install -y nodejs npm
