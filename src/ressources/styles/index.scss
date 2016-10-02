@@ -26,7 +26,7 @@ html {
 
       #page {
         height: 100%;
-        width: $widthPageMobile;
+        width: 100% - $widthDrawerLeftMobile;
         margin-left: $widthDrawerLeftMobile;
         transition: $transitionTime;
       }
@@ -50,7 +50,7 @@ html {
 
       @media screen and ("min-width": "900px") {
         #page {
-          width: $widthPageDesktop;
+          width: 100% - $widthDrawerLeftDesktop;
           margin-left: $widthDrawerLeftDesktop;
         }
 

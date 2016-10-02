@@ -1,7 +1,5 @@
 {
   "transitionTime":"1s",
-  "widthPageDesktop": "85%",
-  "widthPageMobile": "50%",
   "widthDrawerLeftDesktop":"15%",
   "widthDrawerLeftMobile":"50%"
 }

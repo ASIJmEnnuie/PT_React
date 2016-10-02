@@ -37,3 +37,15 @@ ReactDOM.render(
     <AppGlob/>
   </MuiThemeProvider>,
   racine);
+
+// setTimeout(function() {
+//   console.log("Unmount");
+//   ReactDOM.unmountComponentAtNode(racine);
+//   ReactDOM.render(
+//     <MuiThemeProvider muiTheme={muiTheme}>
+//       <div>
+//         <h1>Je suis le nouveau contenu</h1>
+//       </div>
+//     </MuiThemeProvider>,
+//     racine);
+// }, 2000);
