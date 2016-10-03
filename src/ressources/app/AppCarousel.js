@@ -1,19 +1,6 @@
 var React = require('react');
 var Slider = require('react-slick');
 
-var Slide = React.createClass({
-  render: function() {
-  	return (
-  		<div className="slide">
-      	<h2>this.props.title</h2>
-      	<div className="slide-text">
-      		<h3>this.props.text</h3>
-      	</div>
-      </div>
-  	);
-  }
-});
-
 var AppCarousel = React.createClass({
   render: function () {
     var settings = {
@@ -28,44 +15,22 @@ var AppCarousel = React.createClass({
       slidesToShow: 3,
       slidesToScroll: 1
     };
+
+    var slides = [];
+    for (var i=0; i < 6; i++) {
+      slides.push(
+        <div key={i} className="slide">
+          <h2>Evt{i+1}</h2>
+          <div className="slide-text">
+            <h3>{i+1}</h3>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <Slider {...settings}>
-        <div className="slide">
-        	<h2>Evt1</h2>
-        	<div className="slide-text">
-        		<h3>1</h3>
-        	</div>
-        </div>
-        <div className="slide">
-        	<h2>Evt2</h2>
-        	<div className="slide-text">
-        		<h3>2</h3>
-        	</div>
-        </div>
-        <div className="slide">
-        	<h2>Evt3</h2>
-        	<div className="slide-text">
-        		<h3>3</h3>
-        	</div>
-        </div>
-        <div className="slide">
-        	<h2>Evt4</h2>
-        	<div className="slide-text">
-        		<h3>4</h3>
-        	</div>
-        </div>
-        <div className="slide">
-        	<h2>Evt5</h2>
-        	<div className="slide-text">
-        		<h3>5</h3>
-        	</div>
-        </div>
-        <div className="slide">
-        	<h2>Evt6</h2>
-        	<div className="slide-text">
-        		<h3>6</h3>
-        	</div>
-        </div>
+        {slides}
       </Slider>
     );
   }

@@ -1,11 +1,8 @@
 
 @import "../datas/style.json";
-// @import $slickPath+"slick-theme.scss";
-// @import $slickPath+"slick.scss";
 @import "slick-theme.scss";
 @import "slick.scss";
 
-// $slick-font-path: "./fonts/" !default;
 
 @mixin default() {
   padding: 0px;
