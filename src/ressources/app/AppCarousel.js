@@ -4,8 +4,8 @@ var Slider = require('react-slick');
 var AppCarousel = React.createClass({
   render: function () {
     var settings = {
-      dots: true,
-			arrows: true,
+      dots: false,
+			arrows: false,
       infinite: true,
 			centerMode: true,
 			autoplay: true,
