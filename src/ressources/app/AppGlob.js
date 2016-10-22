@@ -7,73 +7,72 @@ import AppNavbar from './AppNavbar';
 import AppContent from './AppContent';
 import $ from "jquery";
 
-var style = require("../datas/style.json");
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 var AppGlob = React.createClass({
   getInitialState: function() {
     return {
-      openLeftDrawer: false,
+      openLeftDrawer: true,
       openRightDrawer: false,
-      widthDrawerLeftDesktop: parseInt(style.widthDrawerLeftDesktop.substring(0, style.widthDrawerLeftDesktop.length - 1)),
-      widthDrawerLeftMobile: parseInt(style.widthDrawerLeftMobile.substring(0, style.widthDrawerLeftMobile.length - 1))
+      leftDrawerId: "leftDrawerOpen",
+      pageId: "pageReduced",
+      widthRightDrawer: 200
     }
   },
 
   clickOnLeftButton: function(){
     this.setState(function(previousState, currentProps) {
-      this.resizePage();
-
+      if (previousState.openLeftDrawer === true) {
+        return {
+          openRightDrawer: false,
+          openLeftDrawer : false,
+          leftDrawerId: "leftDrawerClose",
+          pageId: "pageExtended"
+        };
+      }
       return {
         openRightDrawer: false,
-        openLeftDrawer : !this.state.openLeftDrawer
+        openLeftDrawer : true,
+        leftDrawerId: "leftDrawerOpen",
+        pageId: "pageReduced"
       };
     });
   },
 
   clickOnRightButton: function() {
     this.setState(function(previousState, currentProps) {
-      this.resizePage();
-
+      if (previousState.openLeftDrawer === true) {
+        return {
+          openRightDrawer: true,
+          openLeftDrawer : false,
+          leftDrawerId: "leftDrawerClose",
+          pageId: "pageExtended"
+        };
+      }
+      else if (previousState.openRightDrawer === false) {
+        return {
+          openRightDrawer: true,
+          openLeftDrawer : false,
+          leftDrawerId: "leftDrawerClose",
+          pageId: "pageExtended"
+        };
+      }
       return {
-        openLeftDrawer: false,
-        openRightDrawer : !this.state.openRightDrawer
+        openRightDrawer: false,
+        openLeftDrawer : true,
+        leftDrawerId: "leftDrawerOpen",
+        pageId: "pageReduced"
       };
     });
-  },
-
-  resizePage: function() {
-    var node = ReactDOM.findDOMNode(this);
-    var widthDrawerLeft, widthPage;
-
-    if ($(document).width() >= 900){
-      widthDrawerLeft = this.state.widthDrawerLeftDesktop;
-    }
-    else {
-      widthDrawerLeft = this.state.widthDrawerLeftMobile;
-    }
-
-    widthPage = 100 - widthDrawerLeft;
-
-    if (this.state.openLeftDrawer === true) {
-      $(node).children("#page").css("width", widthPage+"%");
-      $(node).children("#page").css("margin-left", widthDrawerLeft+"%");
-      $(node).children("#leftDrawer").css("left", "0%");
-    }
-    else if(this.state.openLeftDrawer === false) {
-      $(node).children("#page").css("width", "100%");
-      $(node).children("#page").css("margin-left", "0%");
-      $(node).children("#leftDrawer").css("left", "-"+widthDrawerLeft+"%");
-    }
   },
 
   render: function() {
     return (
       <div>
-        <AppLeftDrawer />
-        <AppRightDrawer open={this.state.openRightDrawer} width={200} clickOnRightButton={this.clickOnRightButton}/>
+        <AppLeftDrawer id={this.state.leftDrawerId}/>
+        <AppRightDrawer open={this.state.openRightDrawer} width={this.state.widthRightDrawer} clickOnRightButton={this.clickOnRightButton} />
 
-        <div id="page">
+        <div id={this.state.pageId}>
           <AppNavbar clickOnLeftButton={this.clickOnLeftButton} clickOnRightButton={this.clickOnRightButton}/>
           <AppContent />
         </div>

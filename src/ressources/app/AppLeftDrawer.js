@@ -4,13 +4,14 @@ import MenuItem from 'material-ui/MenuItem';
 var AppLeftDrawer = React.createClass({
   getDefaultProps: function() {
     return {
-      open:true
+      open: true,
+      id: "leftDrawerOpen"
    }
  },
 
   render: function() {
     return (
-      <div id="leftDrawer" open={this.props.open}>
+      <div id={this.props.id} open={this.props.open}>
         <MenuItem>Menu Item</MenuItem>
         <MenuItem>Menu Item 2</MenuItem>
         <MenuItem>Menu Item 3</MenuItem>

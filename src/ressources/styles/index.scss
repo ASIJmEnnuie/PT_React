@@ -3,6 +3,24 @@
 @import "slick-theme.scss";
 @import "slick.scss";
 
+@mixin leftDrawer($left) {
+  background-color: $gray;
+  height: 100%;
+  position: fixed;
+  z-index: 1101;
+  top: 0;
+  width: $widthDrawerLeftMobile;
+  left: $left;
+  border-color: $gray;
+  transition: 1s;
+}
+
+@mixin page($left) {
+  height: 100%;
+  width: 100% - $left;
+  margin-left: $left;
+  transition: $transitionTime;
+}
 
 @mixin default() {
   padding: 0px;
@@ -28,37 +46,34 @@ html {
 				width: inherit;
       }
 
-      #page {
-        height: 100%;
-        width: 100% - $widthDrawerLeftMobile;
-        margin-left: $widthDrawerLeftMobile;
-        transition: $transitionTime;
+      #pageReduced {
+        @include page($widthDrawerLeftMobile);
       }
 
-      #leftDrawer {
+      #pageExtended {
+        @include page(0%);
+      }
+
+      #leftDrawerOpen {
+        @include leftDrawer(0%);
         -moz-box-shadow: 2px 2px 10px 0px $gray;
         -webkit-box-shadow: 2px 2px 10px 0px $gray;
         -o-box-shadow: 2px 2px 10px 0px $gray;
         box-shadow: 2px 2px 10px 0px $gray;
         filter:progid:DXImageTransform.Microsoft.Shadow(color=$gray, Direction=134, Strength=10);
-        background-color: $gray;
-        height: 100%;
-        position: fixed;
-        z-index: 1101;
-        top: 0;
-        width: $widthDrawerLeftMobile;
-        left: 0%;
-        border-color: $gray;
-        transition: $transitionTime;
+      }
+
+      #leftDrawerClose {
+        @include leftDrawer(- $widthDrawerLeftMobile);
       }
 
       @media screen and ("min-width": "900px") {
-        #page {
+        #pageReduced {
           width: 100% - $widthDrawerLeftDesktop;
           margin-left: $widthDrawerLeftDesktop;
         }
 
-        #LeftDrawer {
+        #leftDrawerOpen {
           width: $widthDrawerLeftDesktop;
         }
       }
